@@ -1,0 +1,32 @@
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  background-color: #121212;
+  padding: 24px 0 32px 0;
+
+  &__inner {
+    @extend .display-flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 16px;
+  }
+
+  &__social {
+    @extend .display-flex;
+  }
+
+  &__socialItem {
+    margin: 0 20px;
+  }
+}

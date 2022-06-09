@@ -1,0 +1,20 @@
+.header {
+  background: rgba(200, 60, 41, 1);
+  padding: 28px 0 32px 0;
+  border-bottom: 6px solid rgba(18, 18, 18, 1);
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__navItem a{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+    margin: 0 30px;
+  }
+}
