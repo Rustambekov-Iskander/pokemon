@@ -1,8 +1,11 @@
 import React from 'react';
+import Filter from "../../components/filter-menu/Filter";
+import cl from './AllPokemon.module.scss';
 
 const AllPokemon = () => {
     return (
-        <div>
+        <div className={cl.main}>
+            <Filter/>
             Hello world
         </div>
     );
