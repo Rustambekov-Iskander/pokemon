@@ -1,17 +1,15 @@
-import React, {FC, MouseEventHandler} from 'react';
+import React, {ComponentPropsWithoutRef, FC, MouseEventHandler} from 'react';
 import cl from './CheckBox.module.scss';
+import {InputPropsType} from "../../../types/inputTypes";
 
-interface CheckBoxPropsType {
-    label: string;
-}
 
-const CheckBox:FC<CheckBoxPropsType> = ({label}) => {
+const CheckBox:FC<InputPropsType> = ({input, ...props}) => {
     return (
         <label className={cl.check}>
-            <input className={cl.check__input} type="checkbox"/>
+            <input className={cl.check__input} type="checkbox" {...props}/>
             <span className={cl.check__box}>
             </span>
-            {label}
+            {input.name}
         </label>
     );
 };
