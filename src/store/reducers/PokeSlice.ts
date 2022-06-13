@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchPokemons} from "./ActionCreators";
 import {IPokemon} from "../../types/pokemonTypes";
 
 interface PokeState {
@@ -17,22 +16,19 @@ const initialState: PokeState = {
 export const pokeSlice = createSlice({
     name: 'pokemon',
     initialState,
-    reducers: {},
-    extraReducers: {
-        [fetchPokemons.pending.type]: (state) => {
+    reducers: {
+        pokemonsFetching(state) {
             state.isLoading = true;
         },
-
-        [fetchPokemons.fulfilled.type]: (state, action: PayloadAction<IPokemon[]>) => {
+        pokemonsFetchingSuccess(state, action: PayloadAction<IPokemon[]>) {
             state.isLoading = false;
             state.error = '';
             state.pokemons = action.payload;
         },
-
-        [fetchPokemons.rejected.type]: (state, action: PayloadAction<string>) => {
+        pokemonsFetchingError(state, action: PayloadAction<string>) {
             state.isLoading = false;
             state.error = action.payload
-        },
+        }
     }
 })
 

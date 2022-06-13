@@ -10,6 +10,11 @@ a {
   text-decoration: none;
 }
 
+.container {
+  max-width: 1211px;
+  margin: 0 auto;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

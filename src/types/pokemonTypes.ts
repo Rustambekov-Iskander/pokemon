@@ -17,6 +17,17 @@ interface moves {
     }
 }
 
+interface sprites {
+    back_default: string;
+    front_default: string;
+
+    other: {
+        dream_world: {
+            front_default: string;
+        }
+    }
+}
+
 export interface IPokemon {
     abilities: abilities[];
     base_experience: number;
@@ -35,8 +46,6 @@ export interface IPokemon {
         url: string;
     }
     url: string;
-    sprites: {
-        back_default: string;
-        front_default: string
-    }
+    sprites: sprites;
+    weight: number;
 }
