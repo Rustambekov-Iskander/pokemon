@@ -3,7 +3,7 @@ import cl from './MyRadio.module.scss';
 import {InputsPropsType} from "../../../types/inputTypes";
 
 
-const MyRadio:FC<InputsPropsType> = ({inputs, ...props}) => {
+const MyRadio: FC<InputsPropsType> = ({inputs, ...props}) => {
     return (
         <>
             {inputs.map(radio => (

@@ -10,14 +10,14 @@ const PokemonPage = () => {
     const [pokemon, setPokemon] = useState<IPokemon>();
     const params = useParams();
 
-    useEffect( () => {
-        ( async () => {
+    useEffect(() => {
+        (async () => {
             const resp = await axios.get<IPokemon>(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
             setPokemon(resp.data);
         })()
     }, [])
 
-    const paragraphText =  `
+    const paragraphText = `
          ${pokemon?.name} — маленький четвероногий покемон голубовато-зелёного цвета с
          темно-зелёными пятнами на теле. У него красные глаза, широкий рот и слегка заострённые
          уши. Когда его рот открыт, на его верхней челюсти видна пара заострённых зубов.
@@ -30,21 +30,27 @@ const PokemonPage = () => {
             <div className='container'>
                 <div className={cl.main__inner}>
                     <div className={cl.main__row}>
+
                         <div className={cl.main__back}>
                             <Link to={'/'}>
                                 <ArrowBackIcon color="action"/> Вернуться в каталог
                             </Link>
                         </div>
+
                         <div className={cl.main__inf}>
                             <p>
                                 <span className={'bold-16'}>{pokemon?.name} </span>
                                 (яп. フシギダネ Фусигиданэ, англ. {pokemon?.name}) — покемон двойного травяного
                                 ядовитого типа, представленный в первом поколении.
-                                Эволюционирует в Ивизавра на 16 уровне, который затем эволюционирует в Венузавра
-                                на 32 уровне. Наряду с Чармандером и Сквиртлом, это один из стартовых покемонов
+                                Эволюционирует в <span className={'red-text'}>Ивизавра</span> на 16 уровне, который
+                                затем эволюционирует в <span className={'red-text'}>Венузавра </span>
+                                на 32 уровне. Наряду с
+                                <span className={'red-text'}> Чармандером</span> и
+                                <span className={'red-text'}> Сквиртлом</span>, это один из стартовых покемонов
                                 региона Канто.
                             </p>
                         </div>
+
                         <div className={cl.main__table}>
                             <div className={cl.main__tableTitle}>Содержание</div>
                             <ol>
@@ -74,9 +80,7 @@ const PokemonPage = () => {
                     </div>
 
                     <div className={cl.main__pokemonCard}>
-                    {
-                        pokemon ? <PokemonCardComponent pokemon={pokemon}/> : <></>
-                    }
+                        {pokemon ? <PokemonCardComponent pokemon={pokemon}/> : <></>}
                     </div>
                 </div>
             </div>

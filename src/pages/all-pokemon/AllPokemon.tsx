@@ -6,11 +6,10 @@ import Loader from "../../components/UI/loader/Loader";
 import {fetchPokemons} from "../../store/reducers/ActionCreators";
 import PokemonCardComponent from "../../components/pokemon-card/PokemonCardComponent";
 import {Link} from "react-router-dom";
-import {IPokemon} from "../../types/pokemonTypes";
 
 const AllPokemon = () => {
     const dispatch = useAppDispatch()
-    const { pokemons, isLoading, error } = useAppSelector(state => state.pokemonReducer);
+    const {pokemons, isLoading, error} = useAppSelector(state => state.pokemonReducer);
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -19,7 +18,7 @@ const AllPokemon = () => {
 
     if (error) {
         return (
-            <div>Что то пошло не так... {error}</div>
+            <div> Что то пошло не так... {error}</div>
         )
     }
     return (
@@ -31,19 +30,20 @@ const AllPokemon = () => {
                     <div className={cl.main__sortMenu}>
                         <div className={cl.main__sortMenuItem} onClick={() => setValue('height')}>Популярности</div>
                         <div className={cl.main__sortMenuItem} onClick={() => setValue('weight')}>Рейтингу</div>
-                        <div className={cl.main__sortMenuItem} onClick={() => setValue('base_experience')}>Уровню силы</div>
+                        <div className={cl.main__sortMenuItem} onClick={() => setValue('base_experience')}>Уровню силы
+                        </div>
                     </div>
                 </div>
                 {
                     isLoading
-                    ?<Loader/>
-                    :<div className={cl.pokemonCardList}>
-                         {pokemons.map((pokemon) => (
-                             <Link key={pokemon.name} to={`pokemon/${pokemon.id}`}>
-                                 <PokemonCardComponent pokemon={pokemon}/>
-                             </Link>
-                        ))}
-                    </div>
+                        ? <Loader/>
+                        : <div className={cl.pokemonCardList}>
+                            {pokemons.map((pokemon) => (
+                                <Link key={pokemon.name} to={`pokemon/${pokemon.id}`}>
+                                    <PokemonCardComponent pokemon={pokemon}/>
+                                </Link>
+                            ))}
+                        </div>
                 }
             </div>
         </div>
