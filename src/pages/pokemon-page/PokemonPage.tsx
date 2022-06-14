@@ -5,6 +5,7 @@ import {IPokemon} from "../../types/pokemonTypes";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PokemonCardComponent from "../../components/pokemon-card/PokemonCardComponent";
 import axios from "axios";
+import AccordionComponent from "../../components/UI/accordion/AccordionComponent";
 
 const PokemonPage = () => {
     const [pokemon, setPokemon] = useState<IPokemon>();
@@ -63,9 +64,12 @@ const PokemonPage = () => {
                             </ol>
                         </div>
 
+
                         <div className={cl.main__paragraph}>
                             <h1>Внешность</h1>
-                            <p>{paragraphText}</p>
+                            <p>рост : {pokemon?.height}см</p>
+                            <p>вес : {pokemon?.weight}кг</p>
+                            <p>базовый опыт : {pokemon?.base_experience}exp</p>
                         </div>
 
                         <div className={cl.main__paragraph}>
@@ -81,7 +85,16 @@ const PokemonPage = () => {
 
                     <div className={cl.main__pokemonCard}>
                         {pokemon ? <PokemonCardComponent pokemon={pokemon}/> : <></>}
+                        <AccordionComponent title={'Все навыки'}>
+                            <ol>
+                                {pokemon?.moves.map((move) => (
+                                    <li>{move.move.name}</li>
+                                ))
+                                }
+                            </ol>
+                        </AccordionComponent>
                     </div>
+
                 </div>
             </div>
         </div>
